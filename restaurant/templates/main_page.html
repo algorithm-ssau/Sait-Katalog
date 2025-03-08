@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kedi Bahçesi</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@400;700&display=swap');
+
+        /* Подключение SK Moralist вручную */
+        @font-face {
+            font-family: 'SK Moralist';
+            src: url('sk-moralist.woff2') format('woff2'),
+                 url('sk-moralist.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+            unicode-range: U+0400-04FF; /* Только для кириллицы */
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Reem Kufi', 'SK Moralist', sans-serif;
+            background: url('background.png') no-repeat center center/cover;
+            background-attachment: fixed; /* Фон будет фиксированным */
+            text-align: center;
+            color: black;
+        }
+
+        .container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+        }
+
+        /* Декор сверху */
+        .decor {
+            position: absolute;
+            top: 15%; /* Сдвиг картинки вниз */
+            left: 50%;
+            transform: translateX(-50%); /* Центрируем изображение */
+            width: 90%; /* Уменьшаем размер */
+            height: auto;
+            z-index: 10;
+        }
+
+        /* Шапка */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            font-size: 40px;
+            font-weight: normal;
+            position: relative;
+            z-index: 20;
+        }
+
+        .nav-left, .nav-right {
+            display: flex;
+            gap: 70px;
+        }
+
+        .nav-right {
+            margin-left: auto;
+        }
+
+        .nav-center {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .nav-logo {
+            height: 75px; 
+            width: auto;
+            transition: transform 0.3s ease, filter 0.3s ease; /* Плавная анимация */
+        }
+
+        nav a {
+            text-decoration: none;
+            color: black;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        /* Анимация при наведении на логотип */
+        .nav-logo:hover {
+            transform: scale(1.1); /* Увеличение логотипа */
+            filter: brightness(1.2); /* Яркость логотипа */
+        }
+
+        /* Анимация при наведении на ссылки */
+        nav a:hover {
+            color: #E87D09; /* Изменение цвета */
+            transform: translateY(-5px); /* Поднимание вверх */
+        }
+
+        /* Основной заголовок */
+        .title {
+            font-size: 200px;
+            font-weight: normal;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 90%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            white-space: nowrap;
+            z-index: 20;
+        }
+
+        /* Маленькие надписи */
+        .subtitle {
+            font-size: 40px;
+            position: absolute;
+            font-weight: normal;
+            z-index: 20;
+        }
+
+        .subtitle-left {
+            top: 42%;
+            left: 14.5%;
+        }
+
+        .subtitle-right {
+            bottom: 7%;
+            right: 14%;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Декоративное изображение сверху -->
+        <img src="decor.svg" alt="Декор" class="decor">
+
+        <!-- Шапка -->
+        <nav>
+            <div class="nav-left">
+                <a href="#">О нас</a>
+                <a href="#">Меню</a>
+            </div>
+
+            <!-- Логотип в центре -->
+            <div class="nav-center">
+                <img src="cat.svg" alt="Логотип" class="nav-logo">
+            </div>
+
+            <div class="nav-right">
+                <a href="#">Вход/Регистрация</a>
+            </div>
+        </nav>
+
+        <!-- Основной текст -->
+        <h1 class="title">Kedi Bahçesi</h1>
+        <p class="subtitle subtitle-left">Ресторан</p>
+        <p class="subtitle subtitle-right">Кошачий сад</p>
+    </div>
+</body>
+</html>
