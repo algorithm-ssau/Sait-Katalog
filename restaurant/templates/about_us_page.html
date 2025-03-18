@@ -4,6 +4,287 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>О нас</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Reem+Kufi&family=SK+Moralist&family=Montserrat+Alternates&display=swap');
+        
+        
+        body {
+            font-family: 'Montserrat Alternates', sans-serif;
+            background-image: url('background1.png');
+            background-size: 50%;
+            background-position: center;
+            color: black;
+            margin: 0;
+            padding: 0;
+            position: relative;
+            min-height: 100vh; 
+        }
+
+        h1, h2, h3 {
+            font-family: 'Georgia', serif;
+            color: #000000;
+        }
+
+        h2, h3 {
+            font-family: 'SK Moralist', sans-serif;
+            font-weight: 200;
+        }
+
+        h2 {
+            font-size: 50px;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        .header {
+            background-image: url('background.png');
+            background-size: cover;
+            background-position: center;
+            padding: 20px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .header h1 {
+            z-index: 1;
+            font-size: 80px;
+            font-family: 'Reem Kufi', sans-serif;
+            margin: 0;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .header h2 {
+            z-index: 1;
+            font-size: 50px;
+            font-family: 'SK Moralist', sans-serif;
+            margin: 10px 0;
+            display: block;
+        }
+
+        .header img {
+            width: 80px;
+            height: auto;
+            margin-left: 20px;
+            vertical-align: middle;
+            display: inline-block;
+        }
+
+        .intro {
+            background-size: cover;
+            background-position: center;
+            padding: 60px 0;
+            text-align: center;
+            color: #000000;
+        }
+
+        .intro h2 {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+
+        .intro p {
+            font-size: 30px;
+            line-height: 1.6;
+        }
+
+        .section {
+            padding: 60px 0;
+        }
+
+        .story, .features, .legend, .invitation {
+            padding: 40px 0;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .story .content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 40px; 
+        }
+
+        .story .content div {
+            padding-top: 80px; 
+        }
+
+        .story p {
+            font-size: 30px;
+            max-width: 600px;
+            text-align: left;
+            text-indent: 40px; 
+            margin-bottom: 20px; 
+        }
+
+        .gallery {
+            position: relative;
+            width: 50%; 
+            height: 500px;
+        }
+
+        .gallery img {
+            position: absolute;
+            width: 350px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .gallery img:nth-child(1) {
+            top: 0;
+            left: 0;
+            transform: rotate(-7deg);
+        }
+
+        .gallery img:nth-child(2) {
+            top: 100px;
+            left: 260px;
+            transform: rotate(6deg);
+        }
+
+        .gallery img:nth-child(3) {
+            top: 250px;
+            left: 100px;
+            transform: rotate(6deg);
+        }
+
+        .gallery img:nth-child(4) {
+            top: 380px;
+            left: 320px;
+            transform: rotate(-4deg);
+        }
+
+        .feature-timeline {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 40px;
+            width: 100%;
+            padding: 0 10px;
+            gap: 100px;
+        }
+
+        .feature-timeline::before {
+            content: '';
+            position: absolute;
+            width: 4px;
+            height: 100%;
+            background-color: #000000;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            width: 70%;  
+            position: relative;
+            margin: 20px 0;
+        
+        }
+
+        .feature-item img {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            object-fit: cover;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 2px solid #000; 
+        }
+
+        .feature-text {
+            width: 45%;
+            padding: 20px;
+            border-radius: 10px;
+            font-size: 30px;
+            color: #000;
+        }
+
+        .feature-text.left {
+            text-align: right;
+            margin-right: 0;
+            margin-left: -15%;
+        }
+
+        .feature-text.right {
+            text-align: left;
+            margin-left: auto;
+            margin-right: -15%;
+        }
+
+        .legend {
+            background-size: cover;
+            background-position: center;
+            padding: 60px 0;
+            color: black;
+            text-align: center;
+        }
+
+
+        .legend .content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0px;
+            overflow: hidden; 
+        }
+
+        .legend img {
+            width: 1000px;
+            height: 600px;
+            border-radius: 10px;
+            object-fit: cover;
+            margin-right: -200px
+        }
+
+        .legend p {
+            flex: 1;
+            text-align: left;
+            font-family: 'Montserrat Alternates', sans-serif; 
+            font-size: 30px;
+            text-indent: 40px; 
+            margin-bottom: 20px;
+            padding-left: 260px; 
+        }
+
+
+       
+        .invitation {
+            background-image: url('https://via.placeholder.com/1200x600/cccccc/cccccc');
+            background-size: cover;
+            background-position: center;
+            color: black;
+            font-size: 30px;
+        
+        }
+
+        .invitation h3 {
+            font-size: 50px;
+        }
+
+        .invitation .book-button {
+            background-color: #4e4a40;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            font-size: 20px;
+            border-radius: 5px;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .invitation .book-button:hover {
+            background-color: #E87D09;
+        }
+    </style>
 </head>
 <body>
 
