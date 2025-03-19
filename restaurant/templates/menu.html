@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Меню</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .header {
+            background: #d3d3d3;
+            padding: 20px;
+            font-size: 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .nav {
+            background: #bfbfbf;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            gap: 20px;
+        }
+        .nav a {
+            text-decoration: none;
+            color: black;
+            font-size: 18px;
+            text-align: center;
+            flex-grow: 1;
+        }
+        .content {
+            padding: 20px;
+            text-align: center;
+        }
+        .category {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .sub-category {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .menu-items {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .item {
+            width: 200px;
+            height: 200px;
+            background: #d3d3d3;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div style="display: flex; align-items: center;">
+            <h1>Menü</h1>
+            <img src="cat.svg" alt="Логотип" width="50" height="50"> <!-- При необходимости измените размеры -->
+        </div>
+        <p>Меню</p>
+    </div>
+    <div class="nav">
+        <a href="#">Завтраки</a>
+        <a href="#">Закуски</a>
+        <a href="#">Салаты</a>
+        <a href="#">Супы</a>
+        <a href="#">Горячие блюда</a>
+        <a href="#">Десерты</a>
+        <a href="#">Напитки</a>
+    </div>
+    <div class="content">
+        <p class="category">Kahvaltılar</p>
+        <p class="sub-category">Завтраки</p>
+        <div class="menu-items">
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+        </div>
+        <p>Текст текст текст текст</p>
+    </div>
+</body>
+</html>
