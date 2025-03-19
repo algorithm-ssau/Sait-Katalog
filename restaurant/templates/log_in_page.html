@@ -29,7 +29,32 @@
             <button>Войти</button>
         </div>
     </div>
-    
+
+    <script> 
+        // Функция для переключения на регистрацию 
+        function switchToRegister() { 
+            document.getElementById('registerTab').classList.add('active'); 
+            document.getElementById('registerTab').classList.remove('inactive'); 
+            document.getElementById('loginTab').classList.add('inactive'); 
+            document.getElementById('loginTab').classList.remove('active'); 
+            document.getElementById('registerForm').classList.add('active'); 
+            document.getElementById('loginForm').classList.remove('active'); 
+            document.getElementById('registerTab').textContent = 'Регистрация'; 
+            document.getElementById('loginTab').textContent = 'Giriş'; 
+        } 
+ 
+        // Функция для переключения на вход 
+        function switchToLogin() { 
+            document.getElementById('loginTab').classList.add('active'); 
+            document.getElementById('loginTab').classList.remove('inactive'); 
+            document.getElementById('registerTab').classList.add('inactive'); 
+            document.getElementById('registerTab').classList.remove('active'); 
+            document.getElementById('loginForm').classList.add('active'); 
+            document.getElementById('registerForm').classList.remove('active'); 
+            document.getElementById('loginTab').textContent = 'Вход'; 
+            document.getElementById('registerTab').textContent = 'Kayıt'; 
+        } 
+    </script>
 
 </body>
 </html>
