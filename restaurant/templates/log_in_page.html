@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация/Вход</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates&family=Reem+Kufi&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Модальное окно -->
+    <div id="modal" class="modal">
+        <div class="header">
+            <div id="registerTab" class="active" onclick="switchToRegister()">Регистрация</div>
+            <div id="loginTab" class="inactive" onclick="switchToLogin()">Giriş</div>
+        </div>
+
+        <!-- Форма регистрации -->
+        <div id="registerForm" class="form active">
+            <input type="text" placeholder="Имя" required>
+            <input type="password" placeholder="Пароль" required>
+            <button>Зарегистрироваться</button>
+        </div>
+
+        <!-- Форма входа -->
+        <div id="loginForm" class="form">
+            <input type="text" placeholder="Имя" required>
+            <input type="password" placeholder="Пароль" required>
+            <button>Войти</button>
+        </div>
+    </div>
+    
+
+</body>
+</html>
