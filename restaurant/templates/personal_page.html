@@ -4,6 +4,114 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Личный кабинет</title>
+
+    <style> 
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 0; 
+            padding: 0; 
+            background-size: 50%; 
+            background-image: url('background1.png'); 
+        } 
+ 
+        .header { 
+            background-image: url('background.png'); 
+            background-size: cover; 
+            background-position: center; 
+            color: black; 
+            text-align: center; 
+            padding: 50px 20px; 
+        } 
+ 
+        .header-content { 
+            max-width: 800px; 
+            margin: 0 auto; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            gap: 20px; /* Расстояние между текстом и изображением */ 
+        } 
+ 
+        .header-title { 
+            font-family: 'Reem Kufi', sans-serif; 
+            font-size: 80px; 
+            margin: 0; 
+        } 
+ 
+        .header-image { 
+            width: 100px; /* Размер изображения */ 
+            height: auto; 
+        } 
+ 
+        .header-subtitle { 
+            font-family: 'sk moralist', sans-serif; 
+            font-size: 50px; 
+            margin: 20px 0 0 0; 
+        } 
+ 
+        .section-title { 
+            text-align: left; 
+            margin: 40px 20px; 
+        } 
+ 
+        .section-main-title { 
+            font-family: 'Reem Kufi', sans-serif; 
+            font-size: 50px; 
+            margin: 0; 
+        } 
+ 
+        .section-sub-title { 
+            font-family: 'sk moralist', sans-serif; 
+            font-size: 30px; 
+            margin: 10px 0 0 0; 
+        } 
+ 
+        .dishes, .event-cards { 
+            display: flex; 
+            flex-wrap: wrap; 
+            gap: 20px; 
+            padding: 20px; 
+        } 
+ 
+        .dish, .event-card { 
+            background-color: white; 
+            border-radius: 10px; 
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+            overflow: hidden; 
+            width: calc(33.333% - 40px); 
+            text-align: center; 
+            padding: 20px; 
+        } 
+ 
+        .dish img, .event-card img { 
+            width: 100%; 
+            height: auto; 
+            border-radius: 10px; 
+        } 
+ 
+        .dish h4, .event-card h4 { 
+            font-size: 24px; 
+            margin: 15px 0 10px; 
+        } 
+ 
+        .dish p, .event-card p { 
+            font-size: 16px; 
+            color: #666; 
+        } 
+ 
+        .price { 
+            font-size: 20px; 
+            color: #333; 
+            margin-top: 15px; 
+        } 
+ 
+        .event-date { 
+            display: block; 
+            font-size: 14px; 
+            color: #888; 
+            margin-top: 10px; 
+        } 
+    </style>
 </head>
 <body>
     <!-- Шапка -->
@@ -14,7 +122,7 @@
         </div>
         <h2 class="header-subtitle">Личный кабинет</h2>
     </header>
-    
+
     <!-- Раздел Избранное --> 
     <section class="favorites"> 
         <div class="section-title"> 
