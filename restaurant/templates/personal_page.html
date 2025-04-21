@@ -145,7 +145,209 @@
             <img src="{% static 'images/cat.svg' %}" alt="Cat" class="header-image">            
         </div>
         <div class="nav-right">
-            <a href="{% url 'login_page' %}">Вход/Регистрация</a>
+            {% if user_login %}
+                <a href="{% url 'logout' %}">{{ user_login }}(выйти)</a>
+            {% else %}
+                <a href="{% url 'login_page' %}">Вход/Регистрация</a>
+            {% endif %}
+        </div>
+        <h2 class="header-subtitle">Личный кабинет</h2>
+    </header>
+
+    <!-- Раздел Избранное --> 
+    <section class="favorites"> 
+        <div class="section-title"> 
+            <h2 class="section-main-title">Seçkin</h2> 
+            <h3 class="section-sub-title">Избранное</h3> 
+        </div> 
+        <div class="dishes"> 
+            {% for favorite in favorites %} 
+                <div class="dish"> 
+                    <img src="{{ favorite.image_url }}" alt="{{ favorite.name }}"> 
+                    <h4>{{ favorite.name }}</h4> 
+                    <p>{{ favorite.description }}</p> 
+                    <div class="price"> 
+                        <span>{{ favorite.price }} ₽</span> 
+                    </div> 
+                </div> 
+            {% endfor %} 
+        </div> 
+    </section> 
+ 
+    <!-- Раздел Акции и Объявления --> 
+    <section class="events"> 
+        <div class="section-title"> 
+            <h2 class="section-main-title">Etkinlikler ve Duyurular</h2> 
+            <h3 class="section-sub-title">Мероприятия и объявления</h3> 
+        </div> 
+        <div class="event-cards"> 
+            <div class="event-card"> 
+                <img src="{% static 'images/event1.jpg' %}" alt="Event 1"> 
+                <h4>Скидка 20% на все блюда</h4> 
+                <p>Только в этом месяце получите скидку 20% на все блюда в нашем ресторане!</p> 
+                <span class="event-date">До 31 октября</span> 
+            </div> 
+            <div class="event-card"> 
+                <img src="{% static 'images/event2.jpg' %}" alt="Event 2"> 
+                <h4>Вечер живой музыки</h4> 
+                <p>Приходите и наслаждайтесь вечером живой музыки каждую пятницу с 19:00 до 22:00.</p> 
+                <span class="event-date">Каждую пятницу</span> 
+            </div> 
+        </div> 
+    </section>
+</body>
+</html>{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Личный кабинет</title>
+
+    <style> 
+        @import url('https://fonts.googleapis.com/css2?family=Reem+Kufi&display=swap');
+
+        /* Подключение SK Moralist вручную */
+        @font-face {
+            font-family: 'SK Moralist';
+            src: url("{% static 'fonts/sk-moralist.woff2' %}") format('woff2'),
+                 url("{% static 'fonts/sk-moralist.woff' %}") format('woff');
+            font-weight: normal;
+            font-style: normal;
+            unicode-range: U+0400-04FF; /* Только для кириллицы */
+        }
+
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 0; 
+            padding: 0; 
+            background-size: 50%; 
+            background-image: url("{% static 'images/background1.png' %}"); 
+        } 
+ 
+        .header { 
+            background-image: url("{% static 'images/background.png' %}"); 
+            background-size: cover; 
+            background-position: center; 
+            color: black; 
+            text-align: center; 
+            padding: 50px 20px; 
+        } 
+ 
+        .header-content { 
+            max-width: 800px; 
+            margin: 0 auto; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            gap: 20px; /* Расстояние между текстом и изображением */ 
+        } 
+ 
+        .header-title { 
+            font-family: 'Reem Kufi', sans-serif; 
+            font-size: 80px; 
+            margin: 0; 
+        } 
+ 
+        .header-image { 
+            width: 100px; /* Размер изображения */ 
+            height: auto; 
+        } 
+ 
+        .header-subtitle { 
+            font-family: 'SK Moralist', sans-serif; 
+            font-size: 50px; 
+            margin: 20px 0 0 0; 
+        } 
+ 
+        .section-title { 
+            text-align: left; 
+            margin: 40px 20px; 
+        } 
+ 
+        .section-main-title { 
+            font-family: 'Reem Kufi', sans-serif; 
+            font-size: 50px; 
+            margin: 0; 
+        } 
+ 
+        .section-sub-title { 
+            font-family: 'sk moralist', sans-serif; 
+            font-size: 30px; 
+            margin: 10px 0 0 0; 
+        } 
+
+        .nav-right a {
+        font-family: 'sk moralist', sans-serif; /* Используй тот же шрифт, что и для заголовка */
+        font-size: 30px; /* Настроить размер шрифта, если нужно */
+        color: black; /* Цвет текста, чтобы он был виден на фоне */
+        text-decoration: none; /* Убирает подчеркивание */
+        }
+
+        .nav-right a:hover {
+            text-decoration: underline; /* Добавить подчеркивание при наведении */
+        }
+ 
+        .dishes, .event-cards { 
+            display: flex; 
+            flex-wrap: wrap; 
+            gap: 20px; 
+            padding: 20px; 
+        } 
+ 
+        .dish, .event-card { 
+            background-color: white; 
+            border-radius: 10px; 
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+            overflow: hidden; 
+            width: calc(33.333% - 40px); 
+            text-align: center; 
+            padding: 20px; 
+        } 
+ 
+        .dish img, .event-card img { 
+            width: 100%; 
+            height: auto; 
+            border-radius: 10px; 
+        } 
+ 
+        .dish h4, .event-card h4 { 
+            font-size: 24px; 
+            margin: 15px 0 10px; 
+        } 
+ 
+        .dish p, .event-card p { 
+            font-size: 16px; 
+            color: #666; 
+        } 
+ 
+        .price { 
+            font-size: 20px; 
+            color: #333; 
+            margin-top: 15px; 
+        } 
+ 
+        .event-date { 
+            display: block; 
+            font-size: 14px; 
+            color: #888; 
+            margin-top: 10px; 
+        } 
+    </style>
+</head>
+<body>
+    <!-- Шапка -->
+    <header class="header">
+        <div class="header-content">
+            <h1 class="header-title">Kişisel hesap</h1>
+            <img src="{% static 'images/cat.svg' %}" alt="Cat" class="header-image">            
+        </div>
+        <div class="nav-right">
+            {% if user_login %}
+                <a href="{% url 'logout' %}">{{ user_login }}(выйти)</a>
+            {% else %}
+                <a href="{% url 'login_page' %}">Вход/Регистрация</a>
+            {% endif %}
         </div>
         <h2 class="header-subtitle">Личный кабинет</h2>
     </header>
