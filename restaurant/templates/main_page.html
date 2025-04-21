@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -10,8 +12,8 @@
         /* Подключение SK Moralist вручную */
         @font-face {
             font-family: 'SK Moralist';
-            src: url('sk-moralist.woff2') format('woff2'),
-                 url('sk-moralist.woff') format('woff');
+            src: url("{% static 'fonts/sk-moralist.woff2' %}") format('woff2'),
+                 url("{% static 'fonts/sk-moralist.woff' %}") format('woff'),
             font-weight: normal;
             font-style: normal;
             unicode-range: U+0400-04FF; /* Только для кириллицы */
@@ -21,7 +23,7 @@
             margin: 0;
             padding: 0;
             font-family: 'Reem Kufi', 'SK Moralist', sans-serif;
-            background: url('background.png') no-repeat center center/cover;
+            background: url("{% static 'images/background.png' %}") no-repeat center center/cover;
             background-attachment: fixed; /* Фон будет фиксированным */
             text-align: center;
             color: black;
@@ -131,23 +133,22 @@
 <body>
     <div class="container">
         <!-- Декоративное изображение сверху -->
-        <img src="images/decor.svg" alt="Декор" class="decor">
+        <img src="{% static 'images/decor.svg' %}" alt="Декор" class="decor">
 
         <!-- Шапка -->
         <nav>
             <div class="nav-left">
-                <a href="about_us_page.html">О нас</a> 
-                <a href="#">Меню</a>
-                <a href="#">Личный кабинет</a> <!-- Добавленный пункт -->
+                <a href="{% url 'about_us' %}">О нас</a> 
+                <a href="{% url 'menu' %}">Меню</a>
+                <a href="{% url 'personal_page' %}">Личный кабинет</a>
             </div>
 
             <!-- Логотип в центре -->
             <div class="nav-center">
-                <img src="images/cat.svg" alt="Логотип" class="nav-logo">
+                <img src="{% static 'images/cat.svg' %}" alt="Логотип" class="nav-logo">
             </div>
 
             <div class="nav-right">
-                <a href="#">Вход/Регистрация</a>
             </div>
         </nav>
 
