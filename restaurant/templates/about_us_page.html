@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -5,12 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>О нас</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Reem+Kufi&family=SK+Moralist&family=Montserrat+Alternates&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Reem+Kufi&family=Montserrat+Alternates&display=swap');
         
+        /* Подключение SK Moralist вручную */
+        @font-face {
+            font-family: 'SK Moralist';
+            src: url("{% static 'fonts/sk-moralist.woff2' %}") format('woff2'),
+                 url("{% static 'fonts/sk-moralist.woff' %}") format('woff');
+            font-weight: normal;
+            font-style: normal;
+            unicode-range: U+0400-04FF; /* Только для кириллицы */
+        }
         
         body {
             font-family: 'Montserrat Alternates', sans-serif;
-            background-image: url('images/background1.png');
+            background-image: url("{% static 'images/background1.png' %}");
             background-size: 50%;
             background-position: center;
             color: black;
@@ -40,7 +50,7 @@
         }
 
         .header {
-            background-image: url('images/background.png');
+            background-image: url("{% static 'images/background.png' %}");
             background-size: cover;
             background-position: center;
             padding: 20px 0;
@@ -291,7 +301,7 @@
     <div class="header">
         <div class="container">
             <h1>Hakkımızda</h1>
-            <img src="images/cat.svg" alt="Cat Image">
+            <img src="{% static 'images/cat.svg' %}" alt="Cat Image">
             <h2>О нас</h2>
         </div>
     </div>
@@ -314,10 +324,10 @@
                     <p>Я поняла: хочу создать <strong>такое же место</strong>. Так появился <strong>«Кошачий сад»</strong> – ресторан, где каждый может почувствовать себя <br>в уютном турецком дворике, окруженном <strong>зеленью</strong> и <strong>мурчащими друзьями</strong>.</p>
                 </div>
                 <div class="gallery">
-                    <img src="images/image1.png" alt="Фото 1">
-                    <img src="images/image2.png" alt="Фото 2">
-                    <img src="images/image3.png" alt="Фото 3">
-                    <img src="images/image4.png" alt="Фото 4">
+                    <img src="{% static 'images/image1.png' %}" alt="Фото 1">
+                    <img src="{% static 'images/image2.png' %}" alt="Фото 2">
+                    <img src="{% static 'images/image3.png' %}" alt="Фото 3">
+                    <img src="{% static 'images/image4.png' %}" alt="Фото 4">
                 </div>
             </div>
         </div>
@@ -330,10 +340,10 @@
                 <div class="feature-text left">
                     <p><strong>Коты</strong> – настоящие хозяева кафе. Они мирно дремлют на подушках, встречают гостей и создают уют.</p>
                 </div>
-                <img src="images/cat.png" alt="Коты">
+                <img src="{% static 'images/cat.png' %}" alt="Коты">
             </div>
             <div class="feature-item">
-                <img src="images/garden.png" alt="Сад">
+                <img src="{% static 'images/garden.png' %}" alt="Сад">
                 <div class="feature-text right">
                     <p><strong>Сад</strong> на крыше, утопающий в зелени. Мягкие подушки, фонарики и вид на закат.</p>
                 </div>
@@ -342,10 +352,10 @@
                 <div class="feature-text left">
                     <p>Аутентичная <strong>восточная кухня</strong>: пахлава, кебабы, мезе и традиционные турецкие завтраки.</p>
                 </div>
-                <img src="images/food.png" alt="Кухня">
+                <img src="{% static 'images/food.png' %}" alt="Кухня">
             </div>
             <div class="feature-item">
-                <img src="images/tea.png" alt="Чай">
+                <img src="{% static 'images/tea.png' %}" alt="Чай">
                 <div class="feature-text right">
                     <p><strong>Турецкий чай и кофе</strong> подаются в традиционных чашках – наслаждение в каждой капле.</p>
                 </div>
@@ -357,7 +367,7 @@
         <div class="container">
             <h2>Легенда о Султане</h2>
             <div class="content">
-                <img src="images/sultan.png" alt="Султан" />
+                <img src="{% static 'images/sultan.png' %}" alt="Султан" />
                 <div>
                     <p>Одним из первых гостей кафе был <strong>полосатый кот с умными глазами</strong>. Он вошел в сад, осмотрелся, выбрал <strong>самую мягкую подушку</strong> и уснул.</p>
                     <p>Так у нас появился первый настоящий <strong>«хозяин» – Султан</strong>.</p>
@@ -371,7 +381,7 @@
         <div class="container"> 
             <h3>Приходите в «Кошачий сад»</h3>
             <p>Место, где мурлыканье смешивается с ароматами Востока!</p>
-            <a href="#" class="book-button">Перейти в меню</a>
+            <a href="{% url 'menu' %}" class="book-button">Перейти в меню</a>
         </div>
     </div>
 
