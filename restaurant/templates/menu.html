@@ -1,0 +1,392 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Меню ресторана</title>
+    <style>
+        /* Основные стили */
+        body {
+            font-family: 'Montserrat Alternates', sans-serif;
+            background-image: url("{% static 'images/background1.png' %}");
+            background-size: 50%;
+            background-position: center;
+            color: black;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Контейнер для всех категорий */
+        .menu-container {
+            position: relative;
+            padding: 20px;
+        }
+
+        /* Псевдоэлемент для фона */
+        .menu-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.05);
+            z-index: -1;
+        }
+
+        /* Шапка */
+        .header {
+            background-image: url("{% static 'images/background.png' %}");
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            padding: 40px 20px;
+            color: #000;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .header-cat {
+            width: 80px;
+            height: auto;
+        }
+
+        .header h1 {
+            font-family: 'Reem Kufi', sans-serif;
+            font-size: 80px;
+            margin: 0;
+        }
+
+        .header h2 {
+            font-family: 'SK Moralist', sans-serif;
+            font-size: 50px;
+            margin: 10px 0 0;
+        }
+
+        /* Категории */
+        .categories {
+            display: flex;
+            justify-content: center;
+            gap: 70px;
+            padding: 20px;
+            background-image: url("{% static 'images/background1.png' %}");
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            background-size: 50%;
+        }
+
+        .categories::before,
+        .categories::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: #000;
+        }
+
+        .categories::before {
+            top: 0;
+        }
+
+        .categories::after {
+            bottom: 0;
+        }
+
+        .categories a {
+            font-family: 'SK Moralist', sans-serif;
+            font-size: 30px;
+            color: #000;
+            text-decoration: none;
+            transition: color 0.3s;
+            position: relative;
+            z-index: 1;
+        }
+
+        .categories a:hover {
+            color: #E87D09;
+        }
+
+        /* Заголовки категорий */
+        .category-title {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .title-primary {
+            font-family: 'Reem Kufi', sans-serif;
+            font-size: 50px;
+            margin: 0;
+            color: #000000;
+        }
+
+        .title-secondary {
+            font-family: 'SK Moralist', sans-serif;
+            font-size: 30px;
+            margin: 5px 0 0;
+            color: #000000;
+        }
+
+        /* Меню по категориям */
+        .menu-category {
+            padding: 40px 20px;
+        }
+
+        .dishes {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .dish {
+            flex: 1 1 calc(33.333% - 40px);
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .dish img {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+
+        .dish h4 {
+            font-family: 'SK Moralist', sans-serif;
+            font-size: 24px;
+            margin: 15px 0 10px;
+            color: #333;
+        }
+
+        .dish p {
+            font-size: 16px;
+            color: #666;
+            margin: 0 0 15px;
+        }
+
+        .dish .price {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 20px;
+            color: #333;
+        }
+
+        .dish .price span {
+            font-weight: bold;
+        }
+
+        .dish .price .heart {
+            cursor: pointer;
+            font-size: 24px;
+            color: #ccc;
+            transition: color 0.3s;
+        }
+
+        .dish .price .heart:hover {
+            color: #ff0000;
+        }
+    </style>
+    <!-- Подключение шрифтов -->
+    <link href="https://fonts.googleapis.com/css2?family=Reem+Kufi&display=swap" rel="stylesheet">
+    <!-- Подключение SK Moralist вручную -->
+    <style>
+        @font-face {
+            font-family: 'SK Moralist';
+            src: url("{% static 'fonts/sk-moralist.woff2' %}") format('woff2'),
+                 url("{% static 'fonts/sk-moralist.woff' %}") format('woff');
+            font-weight: normal;
+            font-style: normal;
+            unicode-range: U+0400-04FF; /* Только для кириллицы */
+        }
+    </style>
+</head>
+<body>
+    <!-- Шапка -->
+    <div class="header">
+        <div class="header-content">
+            <h1>Menü</h1>
+            <img src="{% static 'images/cat.svg' %}" alt="Cat" class="header-cat">
+        </div>
+        <h2>Меню</h2>
+    </div>
+
+    <!-- Категории -->
+    <div class="categories">
+        <a href="#breakfast">Завтраки</a>
+        <a href="#snacks">Закуски</a>
+        <a href="#salads">Салаты</a>
+        <a href="#soups">Супы</a>
+        <a href="#main">Горячие блюда</a>
+        <a href="#desserts">Десерты</a>
+        <a href="#drinks">Напитки</a>
+    </div>
+
+    <!-- Контейнер для всех категорий меню -->
+    <div class="menu-container">
+        <!-- Меню по категориям -->
+        <div class="menu-category" id="breakfast">
+            <div class="category-title">
+                <h3 class="title-primary">Kahvaltılar</h3>
+                <h4 class="title-secondary">Завтраки</h4>
+            </div>
+            <div class="dishes">
+                {% for dish in dishes %}
+                    {% if dish.category == "Завтраки" %}
+                    <div class="dish">
+                        <img src="{{ dish.image_url }}" alt="{{ dish.name }}">
+                        <h4>{{ dish.name }}</h4>
+                        <p>{{ dish.description }}</p>
+                        <div class="price">
+                            <span>{{ dish.price }} ₽</span>
+                            <span class="heart">&#9825;</span>
+                        </div>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="menu-category" id="snacks">
+            <div class="category-title">
+                <h3 class="title-primary">Meze</h3>
+                <h4 class="title-secondary">Закуски</h4>
+            </div>
+            <div class="dishes">
+                {% for dish in dishes %}
+                    {% if dish.category == "Закуски" %}
+                    <div class="dish">
+                        <img src="{{ dish.image_url }}" alt="{{ dish.name }}">
+                        <h4>{{ dish.name }}</h4>
+                        <p>{{ dish.description }}</p>
+                        <div class="price">
+                            <span>{{ dish.price }} ₽</span>
+                            <span class="heart">&#9825;</span>
+                        </div>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="menu-category" id="salads">
+            <div class="category-title">
+                <h3 class="title-primary">Salatalar</h3>
+                <h4 class="title-secondary">Салаты</h4>
+            </div>
+            <div class="dishes">
+                {% for dish in dishes %}
+                    {% if dish.category == "Салаты" %}
+                    <div class="dish">
+                        <img src="{{ dish.image_url }}" alt="{{ dish.name }}">
+                        <h4>{{ dish.name }}</h4>
+                        <p>{{ dish.description }}</p>
+                        <div class="price">
+                            <span>{{ dish.price }} ₽</span>
+                            <span class="heart">&#9825;</span>
+                        </div>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="menu-category" id="soups">
+            <div class="category-title">
+                <h3 class="title-primary">Çorbalar</h3>
+                <h4 class="title-secondary">Супы</h4>
+            </div>
+            <div class="dishes">
+                {% for dish in dishes %}
+                    {% if dish.category == "Супы" %}
+                    <div class="dish">
+                        <img src="{{ dish.image_url }}" alt="{{ dish.name }}">
+                        <h4>{{ dish.name }}</h4>
+                        <p>{{ dish.description }}</p>
+                        <div class="price">
+                            <span>{{ dish.price }} ₽</span>
+                            <span class="heart">&#9825;</span>
+                        </div>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="menu-category" id="hot dishes">
+            <div class="category-title">
+                <h3 class="title-primary">Sıcak yemekler</h3>
+                <h4 class="title-secondary">Горячие блюда</h4>
+            </div>
+            <div class="dishes">
+                {% for dish in dishes %}
+                    {% if dish.category == "Горячие блюда" %}
+                    <div class="dish">
+                        <img src="{{ dish.image_url }}" alt="{{ dish.name }}">
+                        <h4>{{ dish.name }}</h4>
+                        <p>{{ dish.description }}</p>
+                        <div class="price">
+                            <span>{{ dish.price }} ₽</span>
+                            <span class="heart">&#9825;</span>
+                        </div>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="menu-category" id="deserts">
+            <div class="category-title">
+                <h3 class="title-primary">Tatlılar</h3>
+                <h4 class="title-secondary">Десерты</h4>
+            </div>
+            <div class="dishes">
+                {% for dish in dishes %}
+                    {% if dish.category == "Десерты" %}
+                    <div class="dish">
+                        <img src="{{ dish.image_url }}" alt="{{ dish.name }}">
+                        <h4>{{ dish.name }}</h4>
+                        <p>{{ dish.description }}</p>
+                        <div class="price">
+                            <span>{{ dish.price }} ₽</span>
+                            <span class="heart">&#9825;</span>
+                        </div>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="menu-category" id="drinks">
+            <div class="category-title">
+                <h3 class="title-primary">Meşrubat</h3>
+                <h4 class="title-secondary">Напитки</h4>
+            </div>
+            <div class="dishes">
+                {% for dish in dishes %}
+                    {% if dish.category == "Напитки" %}
+                    <div class="dish">
+                        <img src="{{ dish.image_url }}" alt="{{ dish.name }}">
+                        <h4>{{ dish.name }}</h4>
+                        <p>{{ dish.description }}</p>
+                        <div class="price">
+                            <span>{{ dish.price }} ₽</span>
+                            <span class="heart">&#9825;</span>
+                        </div>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>
