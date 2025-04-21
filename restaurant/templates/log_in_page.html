@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -7,6 +8,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates&family=Reem+Kufi&display=swap" rel="stylesheet">
 
     <style> 
+        /* Подключение SK Moralist вручную */
+        @font-face {
+            font-family: 'SK Moralist';
+            src: url("{% static 'fonts/sk-moralist.woff2' %}") format('woff2'),
+                 url("{% static 'fonts/sk-moralist.woff' %}") format('woff');
+            font-weight: normal;
+            font-style: normal;
+            unicode-range: U+0400-04FF; /* Только для кириллицы */
+        }
+
         /* Основные стили */ 
         body { 
             font-family: 'Montserrat Alternates', sans-serif; 
