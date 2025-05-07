@@ -211,11 +211,16 @@
     </style>
 </head>
 <body>
+    <!-- Добавляем CSRF токен для Ajax запросов -->
+    {% csrf_token %}
+    
     <!-- Шапка -->
     <div class="header">
         <div class="header-content">
             <h1>Menü</h1>
-            <img src="{% static 'images/cat.svg' %}" alt="Cat" class="header-cat">
+            <a href="{% url 'home' %}">
+                <img src="{% static 'images/cat.svg' %}" alt="Cat" class="header-cat">
+            </a>
         </div>
         <h2>Меню</h2>
     </div>
@@ -243,12 +248,18 @@
                 {% for dish in dishes %}
                     {% if dish.category == "Завтраки" %}
                     <div class="dish">
-                        <img src="{{ dish.image_url }}" alt="{{ dish.name }}">
+                        <img src="{{ dish.image.url }}" alt="{{ dish.name }}">
                         <h4>{{ dish.name }}</h4>
                         <p>{{ dish.description }}</p>
                         <div class="price">
                             <span>{{ dish.price }} ₽</span>
-                            <span class="heart">&#9825;</span>
+                            <span class="heart" data-dish-id="{{ dish.id }}" style="{% if dish.id in favorite_dish_ids %}color: #ff0000;{% endif %}">
+                                {% if dish.id in favorite_dish_ids %}
+                                    &#9829;
+                                {% else %}
+                                    &#9825;
+                                {% endif %}
+                            </span>
                         </div>
                     </div>
                     {% endif %}
@@ -265,12 +276,18 @@
                 {% for dish in dishes %}
                     {% if dish.category == "Закуски" %}
                     <div class="dish">
-                        <img src="{{ dish.image_url }}" alt="{{ dish.name }}">
+                        <img src="{{ dish.image.url }}" alt="{{ dish.name }}">
                         <h4>{{ dish.name }}</h4>
                         <p>{{ dish.description }}</p>
                         <div class="price">
                             <span>{{ dish.price }} ₽</span>
-                            <span class="heart">&#9825;</span>
+                            <span class="heart" data-dish-id="{{ dish.id }}" style="{% if dish.id in favorite_dish_ids %}color: #ff0000;{% endif %}">
+                                {% if dish.id in favorite_dish_ids %}
+                                    &#9829;
+                                {% else %}
+                                    &#9825;
+                                {% endif %}
+                            </span>
                         </div>
                     </div>
                     {% endif %}
@@ -287,12 +304,18 @@
                 {% for dish in dishes %}
                     {% if dish.category == "Салаты" %}
                     <div class="dish">
-                        <img src="{{ dish.image_url }}" alt="{{ dish.name }}">
+                        <img src="{{ dish.image.url }}" alt="{{ dish.name }}">
                         <h4>{{ dish.name }}</h4>
                         <p>{{ dish.description }}</p>
                         <div class="price">
                             <span>{{ dish.price }} ₽</span>
-                            <span class="heart">&#9825;</span>
+                            <span class="heart" data-dish-id="{{ dish.id }}" style="{% if dish.id in favorite_dish_ids %}color: #ff0000;{% endif %}">
+                                {% if dish.id in favorite_dish_ids %}
+                                    &#9829;
+                                {% else %}
+                                    &#9825;
+                                {% endif %}
+                            </span>
                         </div>
                     </div>
                     {% endif %}
@@ -309,12 +332,18 @@
                 {% for dish in dishes %}
                     {% if dish.category == "Супы" %}
                     <div class="dish">
-                        <img src="{{ dish.image_url }}" alt="{{ dish.name }}">
+                        <img src="{{ dish.image.url }}" alt="{{ dish.name }}">
                         <h4>{{ dish.name }}</h4>
                         <p>{{ dish.description }}</p>
                         <div class="price">
                             <span>{{ dish.price }} ₽</span>
-                            <span class="heart">&#9825;</span>
+                            <span class="heart" data-dish-id="{{ dish.id }}" style="{% if dish.id in favorite_dish_ids %}color: #ff0000;{% endif %}">
+                                {% if dish.id in favorite_dish_ids %}
+                                    &#9829;
+                                {% else %}
+                                    &#9825;
+                                {% endif %}
+                            </span>
                         </div>
                     </div>
                     {% endif %}
@@ -331,12 +360,18 @@
                 {% for dish in dishes %}
                     {% if dish.category == "Горячие блюда" %}
                     <div class="dish">
-                        <img src="{{ dish.image_url }}" alt="{{ dish.name }}">
+                        <img src="{{ dish.image.url }}" alt="{{ dish.name }}">
                         <h4>{{ dish.name }}</h4>
                         <p>{{ dish.description }}</p>
                         <div class="price">
                             <span>{{ dish.price }} ₽</span>
-                            <span class="heart">&#9825;</span>
+                            <span class="heart" data-dish-id="{{ dish.id }}" style="{% if dish.id in favorite_dish_ids %}color: #ff0000;{% endif %}">
+                                {% if dish.id in favorite_dish_ids %}
+                                    &#9829;
+                                {% else %}
+                                    &#9825;
+                                {% endif %}
+                            </span>
                         </div>
                     </div>
                     {% endif %}
@@ -353,12 +388,18 @@
                 {% for dish in dishes %}
                     {% if dish.category == "Десерты" %}
                     <div class="dish">
-                        <img src="{{ dish.image_url }}" alt="{{ dish.name }}">
+                        <img src="{{ dish.image.url }}" alt="{{ dish.name }}">
                         <h4>{{ dish.name }}</h4>
                         <p>{{ dish.description }}</p>
                         <div class="price">
                             <span>{{ dish.price }} ₽</span>
-                            <span class="heart">&#9825;</span>
+                            <span class="heart" data-dish-id="{{ dish.id }}" style="{% if dish.id in favorite_dish_ids %}color: #ff0000;{% endif %}">
+                                {% if dish.id in favorite_dish_ids %}
+                                    &#9829;
+                                {% else %}
+                                    &#9825;
+                                {% endif %}
+                            </span>
                         </div>
                     </div>
                     {% endif %}
@@ -375,12 +416,18 @@
                 {% for dish in dishes %}
                     {% if dish.category == "Напитки" %}
                     <div class="dish">
-                        <img src="{{ dish.image_url }}" alt="{{ dish.name }}">
+                        <img src="{{ dish.image.url }}" alt="{{ dish.name }}">
                         <h4>{{ dish.name }}</h4>
                         <p>{{ dish.description }}</p>
                         <div class="price">
                             <span>{{ dish.price }} ₽</span>
-                            <span class="heart">&#9825;</span>
+                            <span class="heart" data-dish-id="{{ dish.id }}" style="{% if dish.id in favorite_dish_ids %}color: #ff0000;{% endif %}">
+                                {% if dish.id in favorite_dish_ids %}
+                                    &#9829;
+                                {% else %}
+                                    &#9825;
+                                {% endif %}
+                            </span>
                         </div>
                     </div>
                     {% endif %}
@@ -388,5 +435,45 @@
             </div>
         </div>
     </div>
+
+    <!-- В конце файла перед </body> добавляем JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Получаем CSRF токен
+            const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+            // Обработка клика по сердечку
+            document.querySelectorAll('.heart').forEach(heart => {
+                heart.addEventListener('click', function() {
+                    const dishId = this.dataset.dishId;
+                    
+                    fetch('/toggle-favorite/', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded',
+                            'X-CSRFToken': csrfToken
+                        },
+                        body: `dish_id=${dishId}`
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.status === 'added') {
+                            this.innerHTML = '&#9829;'; // Заполненное сердце
+                            this.style.color = '#ff0000';
+                        } else if (data.status === 'removed') {
+                            this.innerHTML = '&#9825;'; // Пустое сердце
+                            this.style.color = '#ccc';
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        if (error.status === 401) {
+                            alert('Пожалуйста, войдите в систему, чтобы добавить блюдо в избранное');
+                        }
+                    });
+                });
+            });
+        });
+    </script>
 </body>
 </html>
