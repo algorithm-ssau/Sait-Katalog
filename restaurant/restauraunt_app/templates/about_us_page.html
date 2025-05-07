@@ -298,13 +298,15 @@
 </head>
 <body>
 
-    <div class="header">
-        <div class="container">
+    <header class="header">
+        <div class="header-content">
             <h1>Hakkımızda</h1>
-            <img src="{% static 'images/cat.svg' %}" alt="Cat Image">
-            <h2>О нас</h2>
+            <a href="{% url 'home' %}">
+                <img src="{% static 'images/cat.svg' %}" alt="Cat" class="header-cat">
+            </a>
         </div>
-    </div>
+        <h2>О нас</h2>
+    </header>
 
     <div class="intro">
         <div class="container">
