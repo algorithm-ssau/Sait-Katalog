@@ -68,14 +68,14 @@ DATABASES = {
 
 ### 6. Выполни миграции
 
-```python
+```bash
 python manage.py makemigrations
 python manage.py migrate
 ```
 
 ### 7. Запусти сервер
 
-```python
+```bash
 python manage.py runserver
 ```
 
