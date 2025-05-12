@@ -35,3 +35,41 @@ venv/Scripts/activate
 ```bash
 pip install -r requirements.txt
 ```
+
+### 4. Создание БД
+
+#### Подкючение к серверу
+```
+psql -U postgres
+```
+
+#### Создание
+```sql
+CREATE DATABASE your_db_name;
+CREATE USER your_db_user WITH PASSWORD 'your_password';
+GRANT ALL PRIVILEGES ON DATABASE your_db_name TO your_db_user;
+\q
+```
+
+### 5. Настройка конфига
+
+#### В restaurant/restaurant/settings.py добавляем пользователя БД
+
+```python
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "your_db_name",
+        "USER": "your_db_user",
+        "PASSWORD": "your_password",
+        "HOST": "localhost",   # или IP, если база на другом сервере
+        "PORT": "5432",        # стандартный порт PostgreSQL
+    }
+}
+```
+
+
+
+
+
+
