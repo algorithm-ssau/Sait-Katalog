@@ -46,8 +46,6 @@ psql -U postgres
 #### Создание
 ```sql
 CREATE DATABASE your_db_name;
-CREATE USER your_db_user WITH PASSWORD 'your_password';
-GRANT ALL PRIVILEGES ON DATABASE your_db_name TO your_db_user;
 \q
 ```
 
@@ -66,6 +64,19 @@ DATABASES = {
         "PORT": "5432",        # стандартный порт PostgreSQL
     }
 }
+```
+
+### 6. Выполни миграции
+
+```python
+python manage.py makemigrations
+python manage.py migrate
+```
+
+### 7. Запусти сервер
+
+```python
+python manage.py runserver
 ```
 
 
