@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-dq_0t2$*jdla@slf@%9nrp-#1e_%1x4aj+1j1u!k6ayw1aqg=i"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['sait-katalog.onrender.com']
 
@@ -122,12 +122,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'restauraunt_app/static/'
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'restauraunt_app/static/'),
-]
+STATIC_URL = '/static/'
 
-# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles/')  # 💥 Обязательно для Render!
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles/')  # 💥 Обязательно для Render!
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'restauraunt_app/media/')
