@@ -123,11 +123,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = '/static/'
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR, 'restauraunt_app/static'),
-# ]
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'restauraunt_app/static/'),
+]
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles/')  # 💥 Обязательно для Render!
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles/')  # 💥 Обязательно для Render!
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'restauraunt_app/media/')
