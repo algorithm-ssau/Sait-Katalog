@@ -11,4 +11,4 @@ urlpatterns = [
     path('login/', login_page, name='login_page'),
     path('logout/', logout, name='logout'),
     path('toggle-favorite/', toggle_favorite, name='toggle_favorite'),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] 
